@@ -28,7 +28,7 @@ router.post("/", (req, res) => {
       password: req.body.password,
     })
       .save()
-      .then(() => res.status(201).json())
+      .then(() => res.status(201).json({}))
       .catch((err) => {
         res.status(500).json({ error: "Error" });
       });

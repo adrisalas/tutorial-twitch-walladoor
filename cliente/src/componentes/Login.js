@@ -37,7 +37,7 @@ function Login(props) {
         redirect: "follow",
       };
 
-      fetch("localhost:8080/api/users", requestOptions)
+      fetch("/api/users", requestOptions)
         .then((response) => {
           if (response.status >= 200 && response.status < 300) {
             return response.json();
@@ -46,18 +46,23 @@ function Login(props) {
           }
         })
         .then((result) => {
+          console.log("3");
           setUsuarioSignup("");
           setEmailSignup("");
           setEmail2Signup("");
           setPasswordSignup("");
+          setPassword2Signup("");
           setErrorEnSingUp("");
           setOkEnSingUp("Usuario registrado");
         })
         .catch((error) => {
+          console.log("E");
           setErrorEnSingUp("La has liado pardisima");
           setOkEnSingUp("");
         });
     } else {
+      setErrorEnSingUp("La has liado pardisima");
+      setOkEnSingUp("");
     }
   };
 
@@ -176,10 +181,16 @@ function Login(props) {
                       onChange={(e) => setPassword2Signup(e.target.value)}
                     />
                   </Form.Group>
+                  {errorEnSingUp != "" ? (
+                    <Alert variant="danger">{errorEnSingUp}</Alert>
+                  ) : undefined}
+                  {okEnSingUp != "" ? (
+                    <Alert variant="success">{okEnSingUp}</Alert>
+                  ) : undefined}
                   <Button
                     variant="primary"
                     onClick={() => {
-                      alert("Oye");
+                      signUp();
                     }}
                   >
                     Registro sesión
