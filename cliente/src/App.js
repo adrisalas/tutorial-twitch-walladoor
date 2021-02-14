@@ -6,6 +6,7 @@ import React, { useState } from "react";
 
 function App() {
   const [pantalla, setPantalla] = useState("login");
+  const [user, setUser] = useState({});
   const [articulos, setArticulos] = useState([
     {
       img:
@@ -39,10 +40,13 @@ function App() {
         </Jumbotron>
       </Container>
       {pantalla == "login" ? (
-        <Login setPantalla={(pantalla) => setPantalla(pantalla)}></Login>
+        <Login
+          changeWindow={(pantalla) => setPantalla(pantalla)}
+          setUser={(user) => setUser(user)}
+        ></Login>
       ) : (
         <ListaArticulos
-          setPantalla={(pantalla) => setPantalla(pantalla)}
+          changeWindow={(pantalla) => setPantalla(pantalla)}
           articulos={articulos}
         ></ListaArticulos>
       )}

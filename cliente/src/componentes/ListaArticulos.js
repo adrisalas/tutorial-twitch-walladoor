@@ -10,7 +10,7 @@ function ListaArticulos(props) {
           <Button
             variant="danger"
             onClick={() => {
-              props.setPantalla("login");
+              props.changeWindow("login");
             }}
           >
             <svg
